@@ -10,5 +10,31 @@ class Product:
         """Конструктор для создания объектов класса Продукт"""
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+    @classmethod
+    def new_product(cls, new_product: dict):
+        """Класс-метод, принимающий параметры товара в словаре и возвращающий объекты класса Product"""
+        name = new_product["name"]
+        description = new_product["description"]
+        price = new_product["price"]
+        quantity = new_product["quantity"]
+        return cls(name, description, price, quantity)
+
+    @property
+    def price(self):
+        """Геттер для получения цены продукта"""
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: int) -> None:
+        """Сеттер для изменения цены продукта"""
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        else:
+            if new_price < self.__price:
+                print("Новая цена товара ниже старой. Вы уверены, что хотите изменить цену?")
+                user_answer = input("Введите 'y'/'n' (yes/no): ")
+                if user_answer == "y":
+                    self.__price = new_price
