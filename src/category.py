@@ -16,15 +16,16 @@ class Category:
         self.description = description
         self.__products = products if products else []
         Category.category_count += 1
-        Category.product_count += len(products) if products else 0
+        Category.product_count += len(self.__products) if products else 0
 
-    def add_product(self, product: Product) -> None:
+    def add_product(self, product: Product):
         """Метод для добавления товаров в список продуктов категории"""
-        self.__products.append(product)
         Category.product_count += 1
+        self.__products.append(product)
+
 
     @property
-    def products(self) -> str:
+    def products(self):
         """Геттер для выведения информации о списке продуктов категорий в виде спец-строки"""
         str_product = ""
         for product in self.__products:

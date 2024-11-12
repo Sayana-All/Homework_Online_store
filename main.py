@@ -26,7 +26,7 @@ if __name__ == "__main__":
     print(new_product.price)
     print(new_product.quantity)
 
-    new_product.price = 800
+    new_product.price = 800.0
     print(new_product.price)
 
     new_product.price = -100

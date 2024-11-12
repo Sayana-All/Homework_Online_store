@@ -6,7 +6,7 @@ from src.product import Product
 
 @pytest.fixture
 def some_product():
-    return Product("Пояс", "Тканевый, с крепкой пряжкой", 1500.0, 11)
+    return Product("Пояс", "Широкий, на резинке", 1000.0, 7)
 
 
 @pytest.fixture
@@ -34,3 +34,9 @@ def second_category():
         ],
     )
     return category_2
+
+
+@pytest.fixture
+def product_dict():
+    return {"name": "Test product", "description": "Test description", "price": 100.0,
+         "quantity": 999}
