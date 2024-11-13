@@ -20,8 +20,9 @@ def test_product_new_product(product_dict) -> None:
 
 def test_product_price_setter(capsys, monkeypatch):
     """Проверка на изменение цены"""
-    new_product = Product.new_product({"name": "Test product", "description": "Test description", "price": 100.0,
-         "quantity": 999})
+    new_product = Product.new_product(
+        {"name": "Test product", "description": "Test description", "price": 100.0, "quantity": 999}
+    )
     assert new_product.price == 100.0
 
     new_product.price = -222.0

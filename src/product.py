@@ -28,7 +28,7 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self, new_price: float) -> None:
+    def price(self, new_price: float):
         """Сеттер для изменения цены продукта"""
         if new_price <= 0.0:
             print("Цена не должна быть нулевая или отрицательная")

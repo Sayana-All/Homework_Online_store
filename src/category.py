@@ -23,7 +23,6 @@ class Category:
         self.__products.append(product)
         Category.product_count += 1
 
-
     @property
     def products(self):
         """Геттер для выведения информации о списке продуктов категорий в виде спец-строки"""
