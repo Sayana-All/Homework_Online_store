@@ -1,4 +1,7 @@
-def test_category(first_category, second_category):
+from typing import Any
+
+
+def test_category(first_category: Any, second_category: Any) -> None:
     """Тестирование атрибутов класса Category"""
     assert first_category.name == "Украшения"
     assert first_category.description == "Любовь каждой женщины"
@@ -13,7 +16,7 @@ def test_category(first_category, second_category):
     assert second_category.product_count == 5
 
 
-def test_products_property(first_category, second_category):
+def test_products_property(first_category: Any, second_category: Any) -> None:
     """Тестирование геттера на выведение строки списка продуктов класса Категорий"""
     assert first_category.products == (
         "Ожерелье, 10000.0 руб. Остаток: 2 шт.\n"
@@ -23,13 +26,13 @@ def test_products_property(first_category, second_category):
     assert second_category.products == ("Сумка, 7000.0 руб. Остаток: 1 шт.\nПояс кож, 1500.0 руб. Остаток: 11 шт.\n")
 
 
-def test_product_list_property(first_category, second_category):
+def test_product_list_property(first_category: Any, second_category: Any) -> None:
     """Тестирование геттера на получение списка продуктов и взаимодействия с ним"""
     assert len(first_category.product_list) == 3
     assert len(second_category.product_list) == 2
 
 
-def test_add_product(second_category, some_product):
+def test_add_product(second_category: Any, some_product: Any) -> None:
     """Тест на добавление нового продукта в список через категорию"""
     assert second_category.products == ("Сумка, 7000.0 руб. Остаток: 1 шт.\nПояс кож, 1500.0 руб. Остаток: 11 шт.\n")
     second_category.add_product(some_product)

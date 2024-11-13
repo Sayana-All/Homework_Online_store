@@ -1,7 +1,9 @@
+from typing import Any
+
 from src.product import Product
 
 
-def test_product_init(some_product):
+def test_product_init(some_product: Product) -> None:
     """Тестирование атрибутов класса Product"""
     assert some_product.name == "Пояс тк"
     assert some_product.description == "Широкий, на резинке"
@@ -9,7 +11,7 @@ def test_product_init(some_product):
     assert some_product.quantity == 7
 
 
-def test_product_new_product(product_dict) -> None:
+def test_product_new_product(product_dict: dict[str, Any]) -> None:
     """Тестирование на добавление нового продукта"""
     new_product = Product.new_product(product_dict)
     assert new_product.name == "Test product"
@@ -18,7 +20,7 @@ def test_product_new_product(product_dict) -> None:
     assert new_product.quantity == 999
 
 
-def test_product_price_setter(capsys, monkeypatch):
+def test_product_price_setter(capsys, monkeypatch) -> None:
     """Проверка на изменение цены"""
     new_product = Product.new_product(
         {"name": "Test product", "description": "Test description", "price": 100.0, "quantity": 999}

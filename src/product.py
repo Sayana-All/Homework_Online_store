@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Product:
     """Класс для предоставления продуктов онлайн-магазина"""
 
@@ -6,7 +9,7 @@ class Product:
     price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Конструктор для создания объектов класса Продукт"""
         self.name = name
         self.description = description
@@ -14,7 +17,7 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, new_product: dict):
+    def new_product(cls, new_product: dict[str, Any]) -> Any:
         """Класс-метод, принимающий параметры товара в словаре и возвращающий объекты класса Product"""
         name = new_product["name"]
         description = new_product["description"]
@@ -23,12 +26,12 @@ class Product:
         return cls(name, description, price, quantity)
 
     @property
-    def price(self):
+    def price(self) -> float:
         """Геттер для получения цены продукта"""
         return self.__price
 
     @price.setter
-    def price(self, new_price: float):
+    def price(self, new_price: float) -> None:
         """Сеттер для изменения цены продукта"""
         if new_price <= 0.0:
             print("Цена не должна быть нулевая или отрицательная")

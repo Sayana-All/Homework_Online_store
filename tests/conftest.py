@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from src.category import Category
@@ -5,12 +7,12 @@ from src.product import Product
 
 
 @pytest.fixture
-def some_product():
+def some_product() -> Any:
     return Product("Пояс тк", "Широкий, на резинке", 1000.0, 7)
 
 
 @pytest.fixture
-def first_category():
+def first_category() -> Any:
     category_1 = Category(
         "Украшения",
         "Любовь каждой женщины",
@@ -24,7 +26,7 @@ def first_category():
 
 
 @pytest.fixture
-def second_category():
+def second_category() -> Any:
     category_2 = Category(
         "Аксессуары",
         "Подойдут для любого наряда",
@@ -37,5 +39,5 @@ def second_category():
 
 
 @pytest.fixture
-def product_dict():
+def product_dict() -> dict[str, Any]:
     return {"name": "Test product", "description": "Test description", "price": 100.0, "quantity": 999}
