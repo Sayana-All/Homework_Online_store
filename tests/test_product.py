@@ -3,7 +3,7 @@ from src.product import Product
 
 def test_product_init(some_product):
     """Тестирование атрибутов класса Product"""
-    assert some_product.name == "Пояс"
+    assert some_product.name == "Пояс тк"
     assert some_product.description == "Широкий, на резинке"
     assert some_product.price == 1000.0
     assert some_product.quantity == 7

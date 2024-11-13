@@ -20,7 +20,7 @@ def test_products_property(first_category, second_category):
         "Браслет, 3500.0 руб. Остаток: 3 шт.\n"
         "Кольцо, 2500.0 руб. Остаток: 5 шт.\n"
     )
-    assert second_category.products == ("Сумка, 7000.0 руб. Остаток: 1 шт.\nПояс, 1500.0 руб. Остаток: 11 шт.\n")
+    assert second_category.products == ("Сумка, 7000.0 руб. Остаток: 1 шт.\nПояс кож, 1500.0 руб. Остаток: 11 шт.\n")
 
 
 def test_product_list_property(first_category, second_category):
@@ -31,7 +31,10 @@ def test_product_list_property(first_category, second_category):
 
 def test_add_product(second_category, some_product):
     """Тест на добавление нового продукта в список через категорию"""
-    assert second_category.product_count == 2
-
+    assert second_category.products == ("Сумка, 7000.0 руб. Остаток: 1 шт.\nПояс кож, 1500.0 руб. Остаток: 11 шт.\n")
     second_category.add_product(some_product)
-    assert second_category.product_count == 3
+    assert second_category.products == (
+        "Сумка, 7000.0 руб. Остаток: 1 шт.\n"
+        "Пояс кож, 1500.0 руб. Остаток: 11 шт.\n"
+        "Пояс тк, 1000.0 руб. Остаток: 7 шт.\n"
+    )

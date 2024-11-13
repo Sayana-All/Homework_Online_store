@@ -1,4 +1,4 @@
-from product import Product
+from src.product import Product
 
 
 class Category:
@@ -20,8 +20,8 @@ class Category:
 
     def add_product(self, product: Product):
         """Метод для добавления товаров в список продуктов категории"""
-        Category.product_count += 1
         self.__products.append(product)
+        Category.product_count += 1
 
 
     @property
