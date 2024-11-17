@@ -1,11 +1,12 @@
 import json
 import os
+from typing import Any
 
 from src.category import Category
 from src.product import Product
 
 
-def read_file_json(file_path: str) -> list[dict]:
+def read_file_json(file_path: str) -> Any:
     """Функция чтения данных из JSON-файла"""
     full_path = os.path.abspath(file_path)
     with open(full_path, "r", encoding="UTF-8") as file:
@@ -13,7 +14,7 @@ def read_file_json(file_path: str) -> list[dict]:
     return data
 
 
-def create_objects_from_file(data: list[dict]) -> list:
+def create_objects_from_file(data: Any) -> list[Any]:
     """Функция создания экземпляров класса из данных файла"""
     categories = []
     for category in data:
