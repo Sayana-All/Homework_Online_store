@@ -20,8 +20,8 @@ def test_category(first_category: Any, second_category: Any) -> None:
 
 def test_product_str(first_category: Any, second_category: Any) -> None:
     """Тестирование на отображение класса Category в формате строки"""
-    assert str(first_category) == "Украшения, количество продуктов: 3 шт."
-    assert str(second_category) == "Аксессуары, количество продуктов: 2 шт."
+    assert str(first_category) == "Украшения, количество продуктов: 10 шт."
+    assert str(second_category) == "Аксессуары, количество продуктов: 12 шт."
 
 
 def test_products_property(first_category: Any, second_category: Any) -> None:

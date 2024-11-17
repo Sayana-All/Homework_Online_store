@@ -22,7 +22,10 @@ class Category:
 
     def __str__(self) -> str:
         """Отображение класса Category для пользователей"""
-        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
+        total_quantity = 0
+        for prod in self.__products:
+            total_quantity += prod.quantity
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def add_product(self, product: Product) -> None:
         """Метод для добавления товаров в список продуктов категории"""
