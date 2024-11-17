@@ -21,7 +21,7 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: Any) -> Any:
-        """Метод для сложения двух продуктов для получения их общей стоимости"""
+        """Метод для сложения двух продуктов и получения их общей стоимости"""
         total_amount = self.__price * self.quantity + other.__price * other.quantity
         return total_amount
 
