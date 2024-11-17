@@ -16,6 +16,16 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """Отображение класса Product для пользователей"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other) -> float:
+        """"""
+        total_amount = self.__price * self.quantity + other.__price * other.quantity
+        return total_amount
+
+
     @classmethod
     def new_product(cls, new_product: dict[str, Any]) -> Any:
         """Класс-метод, принимающий параметры товара в словаре и возвращающий объекты класса Product"""
