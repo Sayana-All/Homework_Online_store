@@ -20,11 +20,10 @@ class Product:
         """Отображение класса Product для пользователей"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other) -> float:
-        """"""
+    def __add__(self, other: Any) -> Any:
+        """Метод для сложения двух продуктов для получения их общей стоимости"""
         total_amount = self.__price * self.quantity + other.__price * other.quantity
         return total_amount
-
 
     @classmethod
     def new_product(cls, new_product: dict[str, Any]) -> Any:
