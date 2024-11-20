@@ -1,5 +1,7 @@
 from typing import Any
 
+import pytest
+
 
 def test_category(first_category: Any, second_category: Any) -> None:
     """Тестирование атрибутов класса Category"""
@@ -14,6 +16,12 @@ def test_category(first_category: Any, second_category: Any) -> None:
 
     assert first_category.product_count == 5
     assert second_category.product_count == 5
+
+
+def test_product_str(first_category: Any, second_category: Any) -> None:
+    """Тестирование на отображение класса Category в формате строки"""
+    assert str(first_category) == "Украшения, количество продуктов: 10 шт."
+    assert str(second_category) == "Аксессуары, количество продуктов: 12 шт."
 
 
 def test_products_property(first_category: Any, second_category: Any) -> None:
@@ -41,3 +49,14 @@ def test_add_product(second_category: Any, some_product: Any) -> None:
         "Пояс кож, 1500.0 руб. Остаток: 11 шт.\n"
         "Пояс тк, 1000.0 руб. Остаток: 7 шт.\n"
     )
+
+
+def test_product_iterator(prod_iterator: Any) -> None:
+    """Тестирование класса ProductIterator"""
+    iter(prod_iterator)
+    assert prod_iterator.index == 0
+    assert next(prod_iterator).name == "Сумка"
+    assert next(prod_iterator).name == "Пояс кож"
+
+    with pytest.raises(StopIteration):
+        next(prod_iterator)

@@ -1,4 +1,4 @@
-from typing import Optional, Any
+from typing import Any, Optional
 
 from src.product import Product
 
@@ -20,6 +20,13 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(self.__products) if products else 0
 
+    def __str__(self) -> str:
+        """Отображение класса Category для пользователей"""
+        total_quantity = 0
+        for prod in self.__products:
+            total_quantity += prod.quantity
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
     def add_product(self, product: Product) -> None:
         """Метод для добавления товаров в список продуктов категории"""
         self.__products.append(product)
@@ -30,7 +37,7 @@ class Category:
         """Геттер для выведения информации о списке продуктов категорий в виде спец-строки"""
         str_product = ""
         for product in self.__products:
-            str_product += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            str_product += f"{str(product)}\n"
         return str_product
 
     @property

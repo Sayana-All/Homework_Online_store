@@ -1,14 +1,20 @@
-from typing import Any
+from typing import Any, Iterator
 
 import pytest
 
 from src.category import Category
 from src.product import Product
+from src.product_iterator import ProductIterator
 
 
 @pytest.fixture
 def some_product() -> Any:
     return Product("Пояс тк", "Широкий, на резинке", 1000.0, 7)
+
+
+@pytest.fixture
+def some_other_product() -> Any:
+    return Product("Test product", "Test description", 500.0, 10)
 
 
 @pytest.fixture
@@ -41,3 +47,8 @@ def second_category() -> Any:
 @pytest.fixture
 def product_dict() -> dict[str, Any]:
     return {"name": "Test product", "description": "Test description", "price": 100.0, "quantity": 999}
+
+
+@pytest.fixture
+def prod_iterator(second_category: Any) -> Any:
+    return ProductIterator(second_category)
