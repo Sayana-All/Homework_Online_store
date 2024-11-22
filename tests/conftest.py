@@ -1,7 +1,9 @@
-from typing import Any, Iterator
+from typing import Any
 
 import pytest
 
+from src.lawngrass_prod import LawnGrass
+from src.smartphone_prod import Smartphone
 from src.category import Category
 from src.product import Product
 from src.product_iterator import ProductIterator
@@ -52,3 +54,29 @@ def product_dict() -> dict[str, Any]:
 @pytest.fixture
 def prod_iterator(second_category: Any) -> Any:
     return ProductIterator(second_category)
+
+
+@pytest.fixture
+def some_smartphone_1() -> Any:
+    smartphone1 = Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+    return smartphone1
+
+
+@pytest.fixture
+def some_smartphone_2() -> Any:
+    smartphone2 = Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14, 90.3, "Note 11", 1024, "Синий")
+    return smartphone2
+
+
+@pytest.fixture
+def some_grass_1() -> Any:
+    grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    return grass1
+
+
+@pytest.fixture
+def some_grass_2() -> Any:
+    grass2 = LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+    return grass2

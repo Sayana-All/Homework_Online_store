@@ -51,6 +51,12 @@ def test_add_product(second_category: Any, some_product: Any) -> None:
     )
 
 
+def test_add_product_error(first_category: Any) -> None:
+    """Тест на некорректное добавление нового продукта в список через категорию"""
+    with pytest.raises(TypeError):
+        first_category.add_product("12345")
+
+
 def test_product_iterator(prod_iterator: Any) -> None:
     """Тестирование класса ProductIterator"""
     iter(prod_iterator)

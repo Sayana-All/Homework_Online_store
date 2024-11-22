@@ -4,7 +4,7 @@ from src.product import Product
 
 
 class Category:
-    """Класс для предоставления продуктов онлайн-магазина"""
+    """Класс для предоставления категорий продуктов онлайн-магазина"""
 
     name: str
     description: str
@@ -29,8 +29,11 @@ class Category:
 
     def add_product(self, product: Product) -> None:
         """Метод для добавления товаров в список продуктов категории"""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
     def products(self) -> str:
