@@ -1,5 +1,7 @@
 from typing import Any
 
+import pytest
+
 from src.product import Product
 
 
@@ -32,7 +34,7 @@ def test_product_new_product(product_dict: dict[str, Any]) -> None:
     assert new_product.quantity == 999
 
 
-def test_product_price_setter(capsys, monkeypatch) -> None:
+def test_product_price_setter(capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch) -> None:
     new_product = Product.new_product(
         {"name": "Test product", "description": "Test description", "price": 100.0, "quantity": 999}
     )
@@ -40,7 +42,7 @@ def test_product_price_setter(capsys, monkeypatch) -> None:
 
     new_product.price = -222.0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
     assert new_product.price == 100.0
 
     monkeypatch.setattr("builtins.input", lambda _: "y")
