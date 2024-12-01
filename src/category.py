@@ -47,3 +47,13 @@ class Category:
     def product_list(self) -> list[Any]:
         """Геттер для получения списка продуктов категории"""
         return self.__products
+
+
+    def middle_price(self) -> float:
+        """Метод для подсчета среднего ценника всех товаров категории"""
+        try:
+            avg_price = round(sum([product.price for product in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
+        else:
+            return avg_price
