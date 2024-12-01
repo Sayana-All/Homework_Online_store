@@ -48,3 +48,9 @@ def test_product_price_setter(capsys: pytest.CaptureFixture[str], monkeypatch: p
     monkeypatch.setattr("builtins.input", lambda _: "y")
     new_product.price = 88
     assert new_product.price == 88
+
+
+def test_crash_product() -> None:
+    """Обработка ошибки при добавлении продукта с нулевым количеством"""
+    with pytest.raises(ValueError):
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)

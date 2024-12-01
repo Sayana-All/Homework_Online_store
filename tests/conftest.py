@@ -80,3 +80,8 @@ def some_grass_1() -> Any:
 def some_grass_2() -> Any:
     grass2 = LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
     return grass2
+
+
+@pytest.fixture
+def category_empty() -> Any:
+    return Category("Пустая категория", "Категория без продуктов", [])
