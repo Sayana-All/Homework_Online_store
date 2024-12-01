@@ -2,11 +2,11 @@ from typing import Any
 
 import pytest
 
-from src.lawngrass_prod import LawnGrass
-from src.smartphone_prod import Smartphone
 from src.category import Category
+from src.lawngrass_prod import LawnGrass
 from src.product import Product
 from src.product_iterator import ProductIterator
+from src.smartphone_prod import Smartphone
 
 
 @pytest.fixture
