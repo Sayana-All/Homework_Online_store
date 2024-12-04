@@ -1,5 +1,6 @@
 from typing import Any, Optional
 
+from src.exceptions import ZeroQuantityProduct
 from src.product import Product
 
 
@@ -27,11 +28,20 @@ class Category:
             total_quantity += prod.quantity
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
-    def add_product(self, product: Product) -> None:
+    def add_product(self, product: Product) -> Any:
         """Метод для добавления товаров в список продуктов категории"""
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            try:
+                if product.quantity == 0:
+                    raise ZeroQuantityProduct("Товар с нулевым количеством не может быть добавлен")
+            except ZeroDivisionError as e:
+                print(str(e))
+            else:
+                self.__products.append(product)
+                Category.product_count += 1
+                print("Товар успешно добавлен в категорию.")
+            finally:
+                print(f"Обработка добавления товара {product.name} завершена.")
         else:
             raise TypeError
 
@@ -47,3 +57,12 @@ class Category:
     def product_list(self) -> list[Any]:
         """Геттер для получения списка продуктов категории"""
         return self.__products
+
+    def middle_price(self) -> Any:
+        """Метод для подсчета среднего ценника всех товаров категории"""
+        try:
+            avg_price = round(sum([product.price for product in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
+        else:
+            return avg_price
